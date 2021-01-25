@@ -7,12 +7,19 @@ use Illuminate\Support\Str;
 class Package
 {
     public string $name;
+    
     public ?string $configFileName = null;
+    
     public bool $hasViews = false;
+    
     public bool $hasTranslations = false;
+    
     public array $migrationFileNames = [];
+    
     public array $commands = [];
+    
     public array $components = [];
+    
     public string $basePath;
 
     public function name(string $name): self
