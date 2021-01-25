@@ -7,17 +7,12 @@ use Illuminate\Support\Str;
 class Package
 {
     public string $name;
-
     public ?string $configFileName = null;
-
     public bool $hasViews = false;
-
     public bool $hasTranslations = false;
-
     public array $migrationFileNames = [];
-
     public array $commands = [];
-
+    public array $components = [];
     public string $basePath;
 
     public function name(string $name): self
@@ -72,6 +67,20 @@ class Package
     public function hasCommands(array $commandClassNames): self
     {
         $this->commands = array_merge($this->commands, $commandClassNames);
+
+        return $this;
+    }
+
+    public function hasComponent(string $componentClassName): self
+    {
+        $this->components[] = $componentClassName;
+
+        return $this;
+    }
+
+    public function hasComponents(array $componentClassNames): self
+    {
+        $this->components = array_merge($this->components, $componentClassNames);
 
         return $this;
     }

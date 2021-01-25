@@ -23,7 +23,8 @@ class YourPackageServiceProvider extends PackageServiceProvider
             ->hasViews()
             ->hasTranslations()
             ->hasMigration('create_package_tables')
-            ->hasCommand(YourCoolPackageCommand::class);
+            ->hasCommand(YourCoolPackageCommand::class)
+            ->hasComponent(YourCoolPackageComponent::class);
     }
 }
 ```
@@ -178,7 +179,7 @@ Like you might expect, published migration files will be prefixed with the curre
 
 ### Registering commands
 
-You can register any command you package provides with the `hasCommand` function.
+You can register any command your package provides with the `hasCommand` function.
 
 ```php
 $package
@@ -194,6 +195,26 @@ $package
     ->hasCommands([
         YourCoolPackageCommand::class,
         YourOtherCoolPackageCommand::class,
+    ]);
+```
+### Registering components
+
+You can register any components your package provides with the `hasComponent` function.
+
+```php
+$package
+    ->name('your-package-name')
+    ->hasComponent(YourCoolPackageComponent::class);
+````
+
+If your package provides multiple components, you can either use `hasComponent` multiple times, or pass an array to `hasComponents`
+
+```php
+$package
+    ->name('your-package-name')
+    ->hasComponents([
+        YourCoolPackageComponent::class,
+        YourOtherCoolPackageComponent::class,
     ]);
 ```
 
