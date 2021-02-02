@@ -79,7 +79,7 @@ abstract class PackageServiceProvider extends ServiceProvider
             $this->loadViewsFrom($this->package->basePath('/../resources/views'), $this->package->name);
         }
 
-        $this->loadViewComponentsAs($this->package->name, $this->package->components);
+        $this->loadViewComponentsAs($this->package->shortPackageName(), $this->package->components);
 
         $this->packageBooted();
     }
